@@ -12,17 +12,23 @@ class Concentration {
     
     var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
-            var foundIndex: Int?
-            for index in cards.indices {
-                if cards[index].isFaceUp {
-                    if foundIndex == nil {
-                        foundIndex = index
-                    } else {
-                        return nil
-                    }
-                }
+            // closure
+            let foundIndex = cards.indices.filter { index in
+                return cards[index].isFaceUp
             }
-            return foundIndex
+            return foundIndex.count == 1 ? foundIndex.first : nil
+            
+//            var foundIndex: Int?
+//            for index in cards.indices {
+//                if cards[index].isFaceUp {
+//                    if foundIndex == nil {
+//                        foundIndex = index
+//                    } else {
+//                        return nil
+//                    }
+//                }
+//            }
+//            return foundIndex
         }
         set {
             for index in cards.indices {
