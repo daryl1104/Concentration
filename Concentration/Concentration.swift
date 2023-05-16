@@ -12,11 +12,15 @@ class Concentration {
     
     var indexOfOneAndOnlyFaceUpCard: Int? {
         get {
-            // closure
-            let foundIndex = cards.indices.filter { index in
+            return cards.indices.filter { index in
                 return cards[index].isFaceUp
-            }
-            return foundIndex.count == 1 ? foundIndex.first : nil
+            }.oneAndOnly
+            
+            // closure
+//            let foundIndex = cards.indices.filter { index in
+//                return cards[index].isFaceUp
+//            }.
+//            return foundIndex.count == 1 ? foundIndex.first : nil
             
 //            var foundIndex: Int?
 //            for index in cards.indices {
@@ -78,5 +82,12 @@ class Concentration {
     
     func flipCard() {
         
+    }
+}
+
+
+extension Collection {
+    var oneAndOnly: Element? {
+        return count == 1 ? first : nil
     }
 }
